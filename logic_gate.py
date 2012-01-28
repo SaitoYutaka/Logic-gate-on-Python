@@ -45,6 +45,15 @@ def logical_not(a):
    else: return -1
 
 def half_adder(a, b):
+   """
+ A ---+--++----*
+      |   >>XOR >---- S
+ B -+--)-++----*
+    | |
+    | +----+----*
+    |      | AND >--- C
+    +------+----*
+   """
    s = logical_xor(a, b)
    c = logical_and(a, b)
    return s, c
