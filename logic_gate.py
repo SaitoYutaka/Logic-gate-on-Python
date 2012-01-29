@@ -34,6 +34,17 @@ def logical_and(a, b):
    elif(a == 1 and b == 1): return 1
    else: return -1
 
+def logical_and_3input(a, b, c):
+   """
+     --+----*
+     __| AND *---
+       |     *
+     --+----*
+   """
+   n = logical_and(a, b)
+   s = logical_and(n, c)
+   return s
+
 def logical_not(a):
    """
      |*
@@ -127,3 +138,28 @@ def plus(n1, n2):
       ret = make_num(s0, s1, s2, s3)
       if(c4 == 1): ret |= 0x10
       return ret
+
+def two_to_one_mux(a, b, s):
+   """
+         A    B
+         |    |   
+      ---+----+---
+      *          *
+       *        *--- S
+        *------*
+           |
+           Z
+   """
+   if((s == 0) and (a == 1) and (b == 1)): return 1
+   if((s == 0) and (a == 1) and (b == 0)): return 1
+   if((s == 0) and (a == 0) and (b == 1)): return 0
+   if((s == 0) and (a == 0) and (b == 0)): return 0
+   if((s == 1) and (a == 1) and (b == 1)): return 1
+   if((s == 1) and (a == 1) and (b == 0)): return 0
+   if((s == 1) and (a == 0) and (b == 1)): return 1
+   if((s == 1) and (a == 0) and (b == 0)): return 0
+   return -1
+
+def four_to_one_mux():
+   pass
+   
